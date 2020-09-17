@@ -1,52 +1,87 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
 
-# Linker output
-*.ilk
-*.map
-*.exp
+int calculate(int sayi){
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    int i,sayac=0;
+    
+    for(i=2;i<sayi;i++)
+    {
+       if(sayi%i==0)
+       {
+           sayac++;
+       }    
+    }     
+    
+    if(sayac==0)
+       return sayi;  
+    else
+      return 0;
+                 
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+   return 0;
+}
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+int main(){
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+printf("2 basamaklı en düşük 3 asal sayının toplamı: %d\n\n",twoDigit());
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+
+
+printf("3 basamaklı en düşük 3 asal sayının toplamı: %d",threeDigit());
+
+   return 0;
+}
+
+
+
+ int twoDigit(){
+
+
+    int least_most=0,gather=0;
+   
+   for (int i = 10; i < 100; i++)
+   {
+         int temp = calculate(i);
+
+            if (temp)
+            {
+                    gather += temp;
+                    ++least_most;
+            }
+            else
+            {
+               continue;
+            }
+            
+
+         if (least_most==3)break;    
+
+   }
+
+
+return gather;  
+
+}
+
+
+int threeDigit(){
+
+    int least_most=0,gather=0;
+   
+   for (int i = 100; i < 1000; i++)
+   {
+         int temp = calculate(i);
+
+            if (temp)
+            {
+                    gather += temp;
+                    ++least_most;
+            }
+
+            if (least_most==3)break;    
+
+   }
+   return gather;
+}
